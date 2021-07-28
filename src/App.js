@@ -18,7 +18,7 @@ function App() {
     initTodo = [];
   }
   else {
-    initTodo = JSON.parse(localStorage.getItem("todos"));
+    initTodo = JSON.parse(localStorage.getItem("todos")); //to get object from localStorage we convert it to object from string
   }
 
 
@@ -75,7 +75,7 @@ function App() {
   */
   const [todos, setTodos] = useState(initTodo);
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
+    localStorage.setItem("todos", JSON.stringify(todos)); //to store object in locastorage convert in first string
   }, [todos])
 
   return (
@@ -83,7 +83,7 @@ function App() {
       <Router>
         <Header title="My Todos List" searchBar={true} />
         <Switch>
-          <Route exact path="/" render={() => {
+          <Route exact path="/" render={() => {  //if only path is written and we search '/about' we get path page because it encounters '/' first and shows us home page so we write exact to match exact paths.
             return (
               <>
                 <AddTodo addTodo={addTodo} />
